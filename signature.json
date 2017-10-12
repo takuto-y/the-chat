@@ -1,0 +1,163 @@
+{
+  "TheChat": {
+    "description": "Chat UI of the-components",
+    "displayName": "TheChat",
+    "methods": []
+  },
+  "TheChatStyle": {
+    "description": "Style for TheChat",
+    "displayName": "TheChatStyle",
+    "methods": [],
+    "props": {
+      "options": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Style options",
+        "defaultValue": {
+          "value": "{}",
+          "computed": false
+        }
+      }
+    }
+  },
+  "TheChatTimeLine": {
+    "description": "Chat Time line",
+    "displayName": "TheChatTimeLine",
+    "methods": [],
+    "props": {
+      "items": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "object"
+          }
+        },
+        "required": false,
+        "description": "Item data",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "lang": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Lang",
+        "defaultValue": {
+          "value": "'en'",
+          "computed": false
+        }
+      }
+    }
+  },
+  "TheChatTimeLineItem": {
+    "description": "Chat Time line item",
+    "displayName": "TheChatTimeLineItem",
+    "methods": [],
+    "props": {
+      "at": {
+        "type": {
+          "name": "instanceOf",
+          "value": "Date"
+        },
+        "required": true,
+        "description": "Date of the item",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "text": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Text",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "who": {
+        "type": {
+          "name": "object"
+        },
+        "required": true,
+        "description": "Who posts",
+        "defaultValue": {
+          "value": "{}",
+          "computed": false
+        }
+      },
+      "image": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Image Url",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "video": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Video url",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "status": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Status text",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "whoImageSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Image size of who",
+        "defaultValue": {
+          "value": "48",
+          "computed": false
+        }
+      },
+      "align": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'left'",
+              "computed": false
+            },
+            {
+              "value": "'right'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Content align",
+        "defaultValue": {
+          "value": "'left'",
+          "computed": false
+        }
+      }
+    }
+  }
+}
