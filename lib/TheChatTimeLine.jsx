@@ -30,7 +30,8 @@ class TheChatTimeLine extends React.Component {
       children,
       items,
       lang,
-      onWho
+      onWho,
+      whoImageSize
     } = props
 
     const groupedItems = items

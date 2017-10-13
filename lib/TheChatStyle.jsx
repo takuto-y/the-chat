@@ -37,11 +37,13 @@ TheChatStyle.data = (options) => {
       position: 'relative',
       borderRadius: '2px',
       background: backgroundColor,
-      padding: 0
+      padding: 0,
+      boxSizing: 'border-box'
     },
     '.the-chat-time-line': {
       display: 'block',
-      position: 'relative'
+      position: 'relative',
+      boxSizing: 'border-box'
     },
     '.the-chat-time-line-spin': {
       position: 'absolute',

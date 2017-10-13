@@ -273,6 +273,7 @@ Chat Time line
 | `onScrollReachTop` | func  | Handler when scroll reaches top | `null` |
 | `onScrollReachBottom` | func  | Handler when scroll reaches bottom | `null` |
 | `onWho` | func  | Handler for who tap | `null` |
+| `whoImageSize` | number  | Size of who image | `48` |
 
 ### TheChatTimeLineItem
 
