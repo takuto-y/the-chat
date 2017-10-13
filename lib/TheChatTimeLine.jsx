@@ -16,9 +16,9 @@ class TheChatTimeLine extends React.Component {
   constructor (props) {
     super(props)
     const s = this
-    s.elm = null
+    s.inner = null
     s.handleScroll = s.handleScroll.bind(s)
-
+    s.autoFollow = true
   }
 
   render () {
@@ -45,7 +45,6 @@ class TheChatTimeLine extends React.Component {
       <div {...htmlAttributesFor(props, {except: ['className']})}
            {...eventHandlersFor(props, {except: []})}
            className={c('the-chat-time-line', className)}
-           ref={(elm) => { s.elm = elm }}
       >
         <TheCondition if={!!spinning}>
           <TheSpin cover
@@ -53,7 +52,8 @@ class TheChatTimeLine extends React.Component {
                    className='the-chat-time-line-spin'
           />
         </TheCondition>
-        <div className='the-chat-time-line-inner'>
+        <div className='the-chat-time-line-inner'
+             ref={(inner) => { s.inner = inner }}>
           {children}
           {
             Object.keys(groupedItems)
@@ -88,14 +88,25 @@ class TheChatTimeLine extends React.Component {
 
   componentDidMount () {
     const s = this
-    const {elm, handleScroll} = s
-    elm.addEventListener('scroll', handleScroll)
+    const {inner, handleScroll} = s
+    inner.addEventListener('scroll', handleScroll)
+  }
+
+  componentDidUpdate () {
+    const s = this
+    const {inner} = s
+
+    if (inner) {
+      if (s.autoFollow) {
+        inner.scrollTop = inner.scrollHeight
+      }
+    }
   }
 
   componentWillUnmount () {
     const s = this
-    const {elm, handleScroll} = s
-    elm.removeEventListener('scroll', handleScroll)
+    const {inner, handleScroll} = s
+    inner.removeEventListener('scroll', handleScroll)
   }
 
   handleScroll (e) {
@@ -107,14 +118,14 @@ class TheChatTimeLine extends React.Component {
       onScrollReachTop && onScrollReachTop()
     }
 
-    const reachBottom = scrollHeight - offsetHeight <= scrollTop
+    const fromBottom = (scrollHeight - offsetHeight) - scrollTop
+    const reachBottom = fromBottom <= 0
     if (reachBottom) {
       const {onScrollReachBottom} = s.props
       onScrollReachBottom && onScrollReachBottom()
     }
 
-    s.scrollTop = scrollTop
-
+    s.autoFollow = fromBottom < 80
   }
 }
 

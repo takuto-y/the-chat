@@ -208,6 +208,7 @@ class ExampleComponent extends React.Component {
           }
         }]
       })
+      console.log('item added')
     }, 5000)
   }
 
@@ -273,7 +274,7 @@ Chat Time line
 | `onScrollReachTop` | func  | Handler when scroll reaches top | `null` |
 | `onScrollReachBottom` | func  | Handler when scroll reaches bottom | `null` |
 | `onWho` | func  | Handler for who tap | `null` |
-| `whoImageSize` | number  | Size of who image | `48` |
+| `whoImageSize` | number  | Size of who image | `TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE` |
 
 ### TheChatTimeLineItem
 
@@ -289,7 +290,7 @@ Chat Time line item
 | `image` | string  | Image Url | `null` |
 | `video` | string  | Video url | `null` |
 | `status` | string  | Status text | `null` |
-| `whoImageSize` | number  | Image size of who | `48` |
+| `whoImageSize` | number  | Image size of who | `TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE` |
 | `align` | enum  | Content align | `'left'` |
 | `onWho` | func  | Handler for click who | `() => null` |
 

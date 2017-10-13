@@ -134,6 +134,7 @@ class ExampleComponent extends React.Component {
           }
         }]
       })
+      console.log('item added')
     }, 5000)
   }
 
