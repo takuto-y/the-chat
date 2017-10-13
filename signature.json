@@ -83,7 +83,7 @@
         "required": false,
         "description": "Handler when scroll reaches top",
         "defaultValue": {
-          "value": "() => null",
+          "value": "null",
           "computed": false
         }
       },
@@ -94,7 +94,18 @@
         "required": false,
         "description": "Handler when scroll reaches bottom",
         "defaultValue": {
-          "value": "() => null",
+          "value": "null",
+          "computed": false
+        }
+      },
+      "onWho": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Handler for who tap",
+        "defaultValue": {
+          "value": "null",
           "computed": false
         }
       }
@@ -201,6 +212,17 @@
         "description": "Content align",
         "defaultValue": {
           "value": "'left'",
+          "computed": false
+        }
+      },
+      "onWho": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Handler for click who",
+        "defaultValue": {
+          "value": "() => null",
           "computed": false
         }
       }
