@@ -57,7 +57,7 @@ TheChatStyle.data = (options) => {
       display: 'flex',
       flexDirection: 'column-reverse',
       background: '#F2F2F2',
-      padding: '8px',
+      padding: '8px 0',
       overflow: 'auto',
       boxSizing: 'border-box',
       position: 'relative',
@@ -153,7 +153,8 @@ TheChatStyle.data = (options) => {
       color: textColor,
       boxSizing: 'border-box',
       padding: '8px',
-      position: 'relative'
+      position: 'relative',
+      fontSize: 'smaller'
     },
     '.the-chat-time-line-item-text-tail': {
       position: 'absolute',

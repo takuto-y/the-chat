@@ -162,11 +162,13 @@ TheChatTimeLineItem.defaultProps = {
   who: {},
   image: null,
   video: null,
-  whoImageSize: 48,
+  whoImageSize: TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE,
   align: 'left',
   onWho: () => null
 }
 
 TheChatTimeLineItem.displayName = 'TheChatTimeLineItem'
+
+TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE = 42
 
 export default TheChatTimeLineItem

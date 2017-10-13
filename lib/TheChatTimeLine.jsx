@@ -143,7 +143,7 @@ TheChatTimeLine.defaultProps = {
   onScrollReachTop: null,
   onScrollReachBottom: null,
   onWho: null,
-  whoImageSize: 48,
+  whoImageSize: TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE,
 }
 
 TheChatTimeLine.Item = 'TheChatTimeLineItem'
