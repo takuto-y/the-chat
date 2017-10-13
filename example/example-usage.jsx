@@ -4,6 +4,7 @@ import React from 'react'
 import { TheChat, TheChatStyle } from 'the-chat'
 import { TheImageStyle } from 'the-image'
 import { TheVideoStyle } from 'the-video'
+import { TheSpinStyle } from 'the-spin'
 
 const images = [
   'https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/01.jpg',
@@ -80,13 +81,16 @@ class ExampleComponent extends React.Component {
       <div>
         <TheVideoStyle/>
         <TheImageStyle/>
+        <TheSpinStyle/>
         <TheChatStyle/>
         <TheChat>
           <TheChat.TimeLine style={{
             height: '300px',
             border: '4px solid #333'
           }}
-                            items={items}/>
+                            items={items}
+                            onWho={(who) => console.log('who selected', who)}
+          />
         </TheChat>
       </div>
 

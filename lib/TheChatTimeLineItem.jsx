@@ -27,7 +27,8 @@ class TheChatTimeLineItem extends React.Component {
       who,
       whoImageSize,
       status,
-      align
+      align,
+      onWho
     } = props
     const {color: whoColor = '#CCC'} = who
     return (
@@ -40,7 +41,9 @@ class TheChatTimeLineItem extends React.Component {
       >
         <div className='the-chat-time-line-item-col the-chat-time-line-item-col-who'>
           <TheCondition if={!!who.image}>
-            <TheImage className='the-chat-time-line-item-who-image'
+            <TheImage className={c('the-chat-time-line-item-who-image', {
+              'the-chat-time-line-item-clickable': !!onWho
+            })}
                       src={who.image}
                       width={whoImageSize}
                       height={whoImageSize}
@@ -50,10 +53,13 @@ class TheChatTimeLineItem extends React.Component {
                         borderColor: whoColor,
                         color: textColorFor(whoColor),
                       }}
+                      onClick={() => onWho && onWho(who)}
             />
           </TheCondition>
           <TheCondition unless={!!who.image}>
-            <div className='the-chat-time-line-item-who-image'
+            <div className={c('the-chat-time-line-item-who-image', {
+              'the-chat-time-line-item-clickable': !!onWho
+            })}
                  src={who.image}
                  width={whoImageSize}
                  height={whoImageSize}
@@ -64,13 +70,16 @@ class TheChatTimeLineItem extends React.Component {
                    width: `${whoImageSize}px`,
                    height: `${whoImageSize}px`,
                  }}
+                 onClick={() => onWho && onWho(who)}
             >
               {who.initial || who.name}
             </div>
           </TheCondition>
         </div>
         <div className='the-chat-time-line-item-col'>
-          <div className='the-chat-time-line-item-who-name'>{who.name}</div>
+          <div className='the-chat-time-line-item-who-name'
+               onClick={() => onWho && onWho(who)}
+          >{who.name}</div>
           <TheCondition if={!!text}>
             <div className='the-chat-time-line-item-content'>
               <div className='the-chat-time-line-item-text'>
@@ -141,7 +150,9 @@ TheChatTimeLineItem.propTypes = {
   /** Image size of who */
   whoImageSize: PropTypes.number,
   /** Content align */
-  align: PropTypes.oneOf(['left', 'right'])
+  align: PropTypes.oneOf(['left', 'right']),
+  /** Handler for click who */
+  onWho: PropTypes.func
 }
 
 TheChatTimeLineItem.defaultProps = {
@@ -152,7 +163,8 @@ TheChatTimeLineItem.defaultProps = {
   image: null,
   video: null,
   whoImageSize: 48,
-  align: 'left'
+  align: 'left',
+  onWho: () => null
 }
 
 TheChatTimeLineItem.displayName = 'TheChatTimeLineItem'

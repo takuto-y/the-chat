@@ -25,8 +25,32 @@
   "TheChatTimeLine": {
     "description": "Chat Time line",
     "displayName": "TheChatTimeLine",
-    "methods": [],
+    "methods": [
+      {
+        "name": "handleScroll",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
     "props": {
+      "spinning": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Show spinner",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
       "items": {
         "type": {
           "name": "arrayOf",
@@ -49,6 +73,28 @@
         "description": "Lang",
         "defaultValue": {
           "value": "'en'",
+          "computed": false
+        }
+      },
+      "onScrollReachTop": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Handler when scroll reaches top",
+        "defaultValue": {
+          "value": "() => null",
+          "computed": false
+        }
+      },
+      "onScrollReachBottom": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Handler when scroll reaches bottom",
+        "defaultValue": {
+          "value": "() => null",
           "computed": false
         }
       }

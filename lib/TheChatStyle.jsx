@@ -35,12 +35,26 @@ TheChatStyle.data = (options) => {
   return asStyleData('.the-chat', {
     '&': {},
     '.the-chat-time-line': {
+      display: 'block',
+      position: 'relative'
+    },
+    '.the-chat-time-line-spin': {
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: 4
+    },
+    '.the-chat-time-line-inner': {
       display: 'flex',
       flexDirection: 'column-reverse',
       background: '#F2F2F2',
       padding: '8px',
       overflow: 'auto',
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
+      position: 'relative',
+      height: '100%'
     },
     '.the-chat-time-line-group': {
       display: 'block',
@@ -117,6 +131,9 @@ TheChatStyle.data = (options) => {
       alignItems: 'center',
       overflow: 'hidden',
       textOverflow: 'ellipsis'
+    },
+    '.the-chat-time-line-item-clickable': {
+      cursor: 'pointer'
     },
     '.the-chat-time-line-item-content': {
       marginBottom: '8px'
