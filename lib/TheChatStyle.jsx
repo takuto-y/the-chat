@@ -33,7 +33,12 @@ TheChatStyle.data = (options) => {
     textColor = ThemeValues.textColor,
   } = options
   return asStyleData('.the-chat', {
-    '&': {},
+    '&': {
+      position: 'relative',
+      borderRadius: '2px',
+      background: backgroundColor,
+      padding: 0
+    },
     '.the-chat-time-line': {
       display: 'block',
       position: 'relative'
@@ -170,10 +175,12 @@ TheChatStyle.data = (options) => {
     },
     '.the-chat-form': {
       display: 'flex',
+      justifyContent: 'flex-end'
 
     },
     '.the-chat-form-form': {
       width: '100%',
+      margin: 0,
       padding: 0
     }
   })
