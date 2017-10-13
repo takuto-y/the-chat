@@ -4,6 +4,89 @@
     "displayName": "TheChat",
     "methods": []
   },
+  "TheChatForm": {
+    "description": "Chat UI of the-components",
+    "displayName": "TheChatForm",
+    "methods": [
+      {
+        "name": "handleKeyDown",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "handleUpdate",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "values",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "handleSubmit",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ],
+    "props": {
+      "values": {
+        "type": {
+          "name": "object"
+        },
+        "required": true,
+        "description": "Form values",
+        "defaultValue": {
+          "value": "{}",
+          "computed": false
+        }
+      },
+      "onUpdate": {
+        "type": {
+          "name": "func"
+        },
+        "required": true,
+        "description": "Handler for value update",
+        "defaultValue": {
+          "value": "() => null",
+          "computed": false
+        }
+      },
+      "onSubmit": {
+        "type": {
+          "name": "func"
+        },
+        "required": true,
+        "description": "Handler for value submit",
+        "defaultValue": {
+          "value": "() => null",
+          "computed": false
+        }
+      },
+      "submitText": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Text for submit",
+        "defaultValue": {
+          "value": "'Send'",
+          "computed": false
+        }
+      }
+    }
+  },
   "TheChatStyle": {
     "description": "Style for TheChat",
     "displayName": "TheChatStyle",

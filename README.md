@@ -77,8 +77,11 @@ Usage
 import React from 'react'
 import { TheChat, TheChatStyle } from 'the-chat'
 import { TheImageStyle } from 'the-image'
+import { TheInputStyle } from 'the-input'
+import { TheButtonStyle } from 'the-button'
 import { TheVideoStyle } from 'the-video'
 import { TheSpinStyle } from 'the-spin'
+import { TheFormStyle } from 'the-form'
 
 const images = [
   'https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/01.jpg',
@@ -92,6 +95,7 @@ class ExampleComponent extends React.Component {
     const s = this
     s._timer = null
     s.state = {
+      form: {},
       items: [
         {
           at: new Date('2017/10/01 12:34'),
@@ -154,8 +158,11 @@ class ExampleComponent extends React.Component {
     return (
       <div>
         <TheVideoStyle/>
+        <TheButtonStyle/>
+        <TheInputStyle/>
         <TheImageStyle/>
         <TheSpinStyle/>
+        <TheFormStyle/>
         <TheChatStyle/>
         <TheChat>
           <TheChat.TimeLine style={{
@@ -164,6 +171,21 @@ class ExampleComponent extends React.Component {
           }}
                             items={items}
                             onWho={(who) => console.log('who selected', who)}
+          />
+          <TheChat.Form onUpdate={(form) => s.setState({form})}
+                        values={s.state.form}
+                        onSubmit={() => s.setState({
+                          form: {},
+                          items: [...s.state.items, {
+                            at: new Date(),
+                            text: s.state.form.text,
+                            align: 'right',
+                            who: {
+                              name: 'Me',
+                              color: '#33A'
+                            }
+                          }]
+                        })}
           />
         </TheChat>
       </div>
@@ -214,6 +236,19 @@ Components
 Chat UI of the-components
 
 
+### TheChatForm
+
+Chat UI of the-components
+
+**Props**
+
+| Name | Type | Description | Default |
+| --- | --- | ---- | ---- |
+| `values` | object  | Form values | `{}` |
+| `onUpdate` | func  | Handler for value update | `() => null` |
+| `onSubmit` | func  | Handler for value submit | `() => null` |
+| `submitText` | string  | Text for submit | `'Send'` |
+
 ### TheChatStyle
 
 Style for TheChat
@@ -235,8 +270,9 @@ Chat Time line
 | `spinning` | bool  | Show spinner | `false` |
 | `items` | arrayOf object | Item data | `[]` |
 | `lang` | string  | Lang | `'en'` |
-| `onScrollReachTop` | func  | Handler when scroll reaches top | `() => null` |
-| `onScrollReachBottom` | func  | Handler when scroll reaches bottom | `() => null` |
+| `onScrollReachTop` | func  | Handler when scroll reaches top | `null` |
+| `onScrollReachBottom` | func  | Handler when scroll reaches bottom | `null` |
+| `onWho` | func  | Handler for who tap | `null` |
 
 ### TheChatTimeLineItem
 
@@ -254,6 +290,7 @@ Chat Time line item
 | `status` | string  | Status text | `null` |
 | `whoImageSize` | number  | Image size of who | `48` |
 | `align` | enum  | Content align | `'left'` |
+| `onWho` | func  | Handler for click who | `() => null` |
 
 
 

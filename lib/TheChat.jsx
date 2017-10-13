@@ -4,6 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import c from 'classnames'
 import TheChatStyle from './TheChatStyle'
+import TheChatForm from './TheChatForm'
 import TheChatTimeLine from './TheChatTimeLine'
 import TheChatTimeLineItem from './TheChatTimeLineItem'
 import { htmlAttributesFor, eventHandlersFor } from 'the-component-util'
@@ -31,6 +32,7 @@ class TheChat extends React.Component {
 }
 
 TheChat.Style = TheChatStyle
+TheChat.Form = TheChatForm
 TheChat.TimeLine = TheChatTimeLine
 TheChat.TimeLineItem = TheChatTimeLineItem
 

@@ -64,7 +64,8 @@ TheChatStyle.data = (options) => {
       display: 'block',
       position: 'sticky',
       textAlign: 'center',
-      top: '0'
+      top: 0,
+      zIndex: 1
     },
     '.the-chat-time-line-group-title': {
       backgroundColor: 'rgba(0,0,0,0.2)',
@@ -166,6 +167,14 @@ TheChatStyle.data = (options) => {
     '.the-chat-time-line-item-date': {
       lineHeight: '1em',
       marginBottom: '8px'
+    },
+    '.the-chat-form': {
+      display: 'flex',
+
+    },
+    '.the-chat-form-form': {
+      width: '100%',
+      padding: 0
     }
   })
 }

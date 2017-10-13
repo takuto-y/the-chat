@@ -34,7 +34,6 @@ class TheChatTimeLine extends React.Component {
     } = props
 
     const groupedItems = items
-      .sort((a, b) => b.at - a.at)
       .reduce((grouped, item) => {
         const title = formatDate(item.at, 'LL', {lang})
         return Object.assign(grouped, {
@@ -56,26 +55,30 @@ class TheChatTimeLine extends React.Component {
         <div className='the-chat-time-line-inner'>
           {children}
           {
-            Object.keys(groupedItems).map((title) => (
-              <div className='the-chat-time-line-group' key={title}>
-                <div className='the-chat-time-line-group-header'>
-                  <h5 className='the-chat-time-line-group-title'>
-                    {title}
-                  </h5>
+            Object.keys(groupedItems)
+              .sort((a, b) => new Date(b) - new Date(a))
+              .map((title) => (
+                <div className='the-chat-time-line-group' key={title}>
+                  <div className='the-chat-time-line-group-header'>
+                    <h5 className='the-chat-time-line-group-title'>
+                      {title}
+                    </h5>
+                  </div>
+                  <div className='the-chat-time-line-group-body'>
+                    {
+                      groupedItems[title]
+                        .sort((a, b) => a.at - b.at)
+                        .map((item) => (
+                          <TheChatTimeLineItem
+                            key={title + 'at,text,image,video'.split(',').map((key) => item[key]).join('-')}
+                            {...item}
+                            {...{onWho}}
+                          />
+                        ))
+                    }
+                  </div>
                 </div>
-                <div className='the-chat-time-line-group-body'>
-                  {
-                    groupedItems[title].map((item) => (
-                      <TheChatTimeLineItem
-                        key={title + 'at,text,image,video'.split(',').map((key) => item[key]).join('-')}
-                        {...item}
-                        {...{onWho}}
-                      />
-                    ))
-                  }
-                </div>
-              </div>
-            ))
+              ))
           }
         </div>
       </div>
