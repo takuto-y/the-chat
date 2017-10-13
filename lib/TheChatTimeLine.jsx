@@ -72,7 +72,7 @@ class TheChatTimeLine extends React.Component {
                           <TheChatTimeLineItem
                             key={title + 'at,text,image,video'.split(',').map((key) => item[key]).join('-')}
                             {...item}
-                            {...{onWho}}
+                            {...{onWho, whoImageSize}}
                           />
                         ))
                     }
@@ -130,7 +130,9 @@ TheChatTimeLine.propTypes = {
   /** Handler when scroll reaches bottom */
   onScrollReachBottom: PropTypes.func,
   /** Handler for who tap */
-  onWho: PropTypes.func
+  onWho: PropTypes.func,
+  /** Size of who image */
+  whoImageSize: PropTypes.number
 }
 
 TheChatTimeLine.defaultProps = {
@@ -139,7 +141,8 @@ TheChatTimeLine.defaultProps = {
   lang: 'en',
   onScrollReachTop: null,
   onScrollReachBottom: null,
-  onWho: null
+  onWho: null,
+  whoImageSize: 48,
 }
 
 TheChatTimeLine.Item = 'TheChatTimeLineItem'
