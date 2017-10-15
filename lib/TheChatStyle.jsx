@@ -28,6 +28,7 @@ TheChatStyle.data = (options) => {
   const {ThemeValues} = TheStyle
   const {
     dominantColor = ThemeValues.dominantColor,
+    textBackgroundColor = '#F0F0F0',
     lightBorderColor = ThemeValues.lightBorderColor,
     backgroundColor = ThemeValues.backgroundColor,
     textColor = ThemeValues.textColor,
@@ -56,7 +57,7 @@ TheChatStyle.data = (options) => {
     '.the-chat-time-line-inner': {
       display: 'flex',
       flexDirection: 'column-reverse',
-      background: '#F2F2F2',
+      background: backgroundColor,
       padding: '8px 0',
       overflow: 'auto',
       boxSizing: 'border-box',
@@ -102,7 +103,13 @@ TheChatStyle.data = (options) => {
     '.the-chat-time-line-item-right': {
       flexDirection: 'row-reverse',
       textAlign: 'right',
+      '.the-chat-time-line-item-text': {
+        backgroundColor: dominantColor,
+        color: 'white',
+        display:'inline-block'
+      },
       '.the-chat-time-line-item-text-tail': {
+        backgroundColor: dominantColor,
         right: '-4px'
       }
     },
@@ -149,7 +156,7 @@ TheChatStyle.data = (options) => {
     '.the-chat-time-line-item-text': {
       display: 'block',
       borderRadius: '4px',
-      background: backgroundColor,
+      background: textBackgroundColor,
       color: textColor,
       boxSizing: 'border-box',
       padding: '8px',
@@ -162,7 +169,7 @@ TheChatStyle.data = (options) => {
       height: '8px',
       transform: 'rotate(45deg)',
       top: '10px',
-      backgroundColor: backgroundColor
+      backgroundColor: textBackgroundColor
     },
     '.the-chat-time-line-item-image': {
       maxWidth: '100%',
