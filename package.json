@@ -1,6 +1,6 @@
 {
   "name": "the-chat",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Chat UI of the-components",
   "main": "shim",
   "scripts": {
