@@ -52,9 +52,9 @@ class TheChatTimeLine extends React.Component {
                    className='the-chat-time-line-spin'
           />
         </TheCondition>
-        <div className='the-chat-time-line-scroll'>
-          <div className='the-chat-time-line-content'
-               ref={(scrollElm) => { s.scrollElm = scrollElm }}>
+        <div className='the-chat-time-line-scroll'
+             ref={(scrollElm) => { s.scrollElm = scrollElm }}>
+          <div className='the-chat-time-line-content'>
             {children}
             {
               Object.keys(groupedItems)
