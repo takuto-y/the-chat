@@ -128,7 +128,7 @@
           "name": "bool"
         },
         "required": false,
-        "description": "Show spinner",
+        "description": "Shows spin",
         "defaultValue": {
           "value": "false",
           "computed": false

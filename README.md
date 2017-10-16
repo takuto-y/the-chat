@@ -89,6 +89,10 @@ const images = [
   'https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/03.jpg'
 ]
 
+const videos = [
+  './mov_bbb.mp4'
+]
+
 class ExampleComponent extends React.Component {
   constructor (props) {
     super(props)
@@ -123,10 +127,11 @@ class ExampleComponent extends React.Component {
         },
         {
           at: new Date('2017/10/08 12:38'),
-          image: images[2],
+          video: videos[0],
           who: {
-            name: 'John',
-            image: images[1]
+            name: 'John The Video',
+            video: videos[0],
+            image: images[1],
           }
         },
         {
@@ -197,6 +202,9 @@ class ExampleComponent extends React.Component {
     const s = this
     s._timer = setInterval(() => {
       const {items} = s.state
+      if (window.DISABLE_THE_CHAT_PUSH) {
+        return
+      }
       s.setState({
         items: [...items, {
           at: new Date(),
@@ -268,7 +276,7 @@ Chat Time line
 
 | Name | Type | Description | Default |
 | --- | --- | ---- | ---- |
-| `spinning` | bool  | Show spinner | `false` |
+| `spinning` | bool  | Shows spin | `false` |
 | `items` | arrayOf object | Item data | `[]` |
 | `lang` | string  | Lang | `'en'` |
 | `onScrollReachTop` | func  | Handler when scroll reaches top | `null` |

@@ -54,19 +54,23 @@ TheChatStyle.data = (options) => {
       bottom: 0,
       zIndex: 4
     },
-    '.the-chat-time-line-inner': {
+    '.the-chat-time-line-scroll': {
+      display: 'block',
+      overflow: 'auto',
+      height: '100%'
+    },
+    '.the-chat-time-line-content': {
       display: 'flex',
       flexDirection: 'column-reverse',
       background: backgroundColor,
       padding: '8px 0',
-      overflow: 'auto',
       boxSizing: 'border-box',
-      position: 'relative',
-      height: '100%'
+      position: 'relative'
     },
     '.the-chat-time-line-group': {
       display: 'block',
-      position: 'relative'
+      position: 'relative',
+      flex: 0
     },
     '.the-chat-time-line-group-header': {
       display: 'block',
@@ -93,7 +97,17 @@ TheChatStyle.data = (options) => {
       display: 'flex',
       alignItems: 'stretch',
       justifyContent: 'flex-start',
-      padding: '8px 0'
+      padding: '8px 0',
+      '.the-image.the-image-fit .the-image-img': {
+        height: 'auto'
+      },
+
+      '.the-video .the-video-inner': {
+        height: 'auto'
+      },
+      '.the-video .the-video-video': {
+        borderRadius: '4px'
+      }
     },
     '.the-chat-time-line-item-left': {
       '.the-chat-time-line-item-text-tail': {

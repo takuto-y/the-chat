@@ -100,15 +100,20 @@ class TheChatTimeLineItem extends React.Component {
             <div className='the-chat-time-line-item-content'>
               <TheImage src={image}
                         width={'100%'}
+                        scale='fit'
                         className='the-chat-time-line-item-image'
+                        resizeInterval={400}
               />
             </div>
           </TheCondition>
           <TheCondition if={!!video}>
             <div className='the-chat-time-line-item-content'>
               <TheVideo src={video}
+                        controls
                         width={'100%'}
+                        scale='fit'
                         className='video'
+                        resizeInterval={400}
               />
             </div>
           </TheCondition>

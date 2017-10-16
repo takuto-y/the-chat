@@ -16,7 +16,7 @@ class TheChatTimeLine extends React.Component {
   constructor (props) {
     super(props)
     const s = this
-    s.inner = null
+    s.scrollElm = null
     s.handleScroll = s.handleScroll.bind(s)
     s.autoFollow = true
   }
@@ -52,35 +52,37 @@ class TheChatTimeLine extends React.Component {
                    className='the-chat-time-line-spin'
           />
         </TheCondition>
-        <div className='the-chat-time-line-inner'
-             ref={(inner) => { s.inner = inner }}>
-          {children}
-          {
-            Object.keys(groupedItems)
-              .sort((a, b) => new Date(b) - new Date(a))
-              .map((title) => (
-                <div className='the-chat-time-line-group' key={title}>
-                  <div className='the-chat-time-line-group-header'>
-                    <h5 className='the-chat-time-line-group-title'>
-                      {title}
-                    </h5>
+        <div className='the-chat-time-line-scroll'>
+          <div className='the-chat-time-line-content'
+               ref={(scrollElm) => { s.scrollElm = scrollElm }}>
+            {children}
+            {
+              Object.keys(groupedItems)
+                .sort((a, b) => new Date(b) - new Date(a))
+                .map((title) => (
+                  <div className='the-chat-time-line-group' key={title}>
+                    <div className='the-chat-time-line-group-header'>
+                      <h5 className='the-chat-time-line-group-title'>
+                        {title}
+                      </h5>
+                    </div>
+                    <div className='the-chat-time-line-group-body'>
+                      {
+                        groupedItems[title]
+                          .sort((a, b) => a.at - b.at)
+                          .map((item) => (
+                            <TheChatTimeLineItem
+                              key={title + 'at,text,image,video'.split(',').map((key) => item[key]).join('-')}
+                              {...item}
+                              {...{onWho, whoImageSize}}
+                            />
+                          ))
+                      }
+                    </div>
                   </div>
-                  <div className='the-chat-time-line-group-body'>
-                    {
-                      groupedItems[title]
-                        .sort((a, b) => a.at - b.at)
-                        .map((item) => (
-                          <TheChatTimeLineItem
-                            key={title + 'at,text,image,video'.split(',').map((key) => item[key]).join('-')}
-                            {...item}
-                            {...{onWho, whoImageSize}}
-                          />
-                        ))
-                    }
-                  </div>
-                </div>
-              ))
-          }
+                ))
+            }
+          </div>
         </div>
       </div>
     )
@@ -88,30 +90,30 @@ class TheChatTimeLine extends React.Component {
 
   componentDidMount () {
     const s = this
-    const {inner, handleScroll} = s
-    inner.addEventListener('scroll', handleScroll)
+    const {scrollElm, handleScroll} = s
+    scrollElm.addEventListener('scroll', handleScroll)
   }
 
   componentDidUpdate () {
     const s = this
-    const {inner} = s
+    const {scrollElm} = s
 
-    if (inner) {
+    if (scrollElm) {
       if (s.autoFollow) {
-        inner.scrollTop = inner.scrollHeight
+        scrollElm.scrollTop = scrollElm.scrollHeight
       }
     }
   }
 
   componentWillUnmount () {
     const s = this
-    const {inner, handleScroll} = s
-    inner.removeEventListener('scroll', handleScroll)
+    const {scrollElm, handleScroll} = s
+    scrollElm.removeEventListener('scroll', handleScroll)
   }
 
   handleScroll (e) {
     const s = this
-    const {scrollHeight, offsetHeight, scrollTop} = e.srcElement
+    const {scrollHeight, offsetHeight, scrollTop} = e.target || e.srcElement
     const reachTop = scrollTop === 0
     if (reachTop) {
       const {onScrollReachTop} = s.props
@@ -130,7 +132,7 @@ class TheChatTimeLine extends React.Component {
 }
 
 TheChatTimeLine.propTypes = {
-  /** Show spinner */
+  /** Shows spin */
   spinning: PropTypes.bool,
   /** Item data */
   items: PropTypes.arrayOf(PropTypes.object),
