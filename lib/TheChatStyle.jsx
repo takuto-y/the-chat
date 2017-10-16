@@ -28,7 +28,8 @@ TheChatStyle.data = (options) => {
   const {ThemeValues} = TheStyle
   const {
     dominantColor = ThemeValues.dominantColor,
-    textBackgroundColor = '#F0F0F0',
+    backgroundForLeftText = '#F0F0F0',
+    backgroundForRightText = '#808080',
     lightBorderColor = ThemeValues.lightBorderColor,
     backgroundColor = ThemeValues.backgroundColor,
     textColor = ThemeValues.textColor,
@@ -105,9 +106,7 @@ TheChatStyle.data = (options) => {
       '.the-video .the-video-inner': {
         height: 'auto'
       },
-      '.the-video .the-video-video': {
-        borderRadius: '4px'
-      }
+      '.the-video .the-video-video': {}
     },
     '.the-chat-time-line-item-left': {
       '.the-chat-time-line-item-text-tail': {
@@ -118,16 +117,19 @@ TheChatStyle.data = (options) => {
       flexDirection: 'row-reverse',
       textAlign: 'right',
       '.the-chat-time-line-item-who-name': {
-        display: 'none'
+        height: 0,
+        overflow: 'hidden',
+        opacity: 0
       },
       '.the-chat-time-line-item-text': {
-        backgroundColor: dominantColor,
+        backgroundColor: backgroundForRightText,
         color: 'white',
         display: 'inline-block'
       },
       '.the-chat-time-line-item-text-tail': {
-        backgroundColor: dominantColor,
-        right: '-4px'
+        backgroundColor: backgroundForRightText,
+        right: '-4px',
+        top: '16px'
       }
     },
     '.the-chat-time-line-item-col': {
@@ -174,7 +176,7 @@ TheChatStyle.data = (options) => {
     '.the-chat-time-line-item-text': {
       display: 'block',
       borderRadius: '4px',
-      background: textBackgroundColor,
+      background: backgroundForLeftText,
       color: textColor,
       boxSizing: 'border-box',
       padding: '8px',
@@ -187,7 +189,7 @@ TheChatStyle.data = (options) => {
       height: '8px',
       transform: 'rotate(45deg)',
       top: '10px',
-      backgroundColor: textBackgroundColor
+      backgroundColor: backgroundForLeftText
     },
     '.the-chat-time-line-item-image': {
       maxWidth: '100%',

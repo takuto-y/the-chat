@@ -135,6 +135,7 @@ class ExampleComponent extends React.Component {
         items: [...items, {
           at: new Date(),
           text: 'Say hoo!',
+          align: s.state.items.length % 2 ? 'left' : 'right',
           who: {
             name: 'hoge',
             initial: 'H'

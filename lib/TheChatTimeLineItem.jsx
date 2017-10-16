@@ -181,6 +181,6 @@ TheChatTimeLineItem.defaultProps = {
 TheChatTimeLineItem.displayName = 'TheChatTimeLineItem'
 
 TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE = 42
-TheChatTimeLineItem.DEFAULT_WHO_BASE_COLOR = 'rgb(253, 223, 193)'
+TheChatTimeLineItem.DEFAULT_WHO_BASE_COLOR = '#58E'
 
 export default TheChatTimeLineItem
