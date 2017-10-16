@@ -32,7 +32,7 @@
     "classnames": "^2.2.5",
     "prop-types": "^15.6.0",
     "the-button": "^2.0.0",
-    "the-color": "^1.0.0",
+    "the-color": "^1.0.1",
     "the-component-util": "^2.0.0",
     "the-condition": "^2.0.0",
     "the-date": "^1.1.2",

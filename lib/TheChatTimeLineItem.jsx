@@ -6,7 +6,7 @@ import { TheImage } from 'the-image'
 import { TheVideo } from 'the-video'
 import { TheCondition } from 'the-condition'
 import { formatDate } from 'the-date'
-import { textColorFor } from 'the-color'
+import { textColorFor, colorWithText } from 'the-color'
 import c from 'classnames'
 import { htmlAttributesFor, eventHandlersFor } from 'the-component-util'
 
@@ -26,11 +26,14 @@ class TheChatTimeLineItem extends React.Component {
       video,
       who,
       whoImageSize,
+      whoBaseColor,
       status,
       align,
       onWho
     } = props
-    const {color: whoColor = '#CCC'} = who
+    const {
+      color: whoColor = colorWithText(who.name, {base: whoBaseColor})
+    } = who
     return (
       <div {...htmlAttributesFor(props, {except: ['className']})}
            {...eventHandlersFor(props, {except: []})}
@@ -152,6 +155,8 @@ TheChatTimeLineItem.propTypes = {
   video: PropTypes.string,
   /** Status text */
   status: PropTypes.string,
+  /** Base color of who */
+  whoBaseColor: PropTypes.string,
   /** Image size of who */
   whoImageSize: PropTypes.number,
   /** Content align */
@@ -167,6 +172,7 @@ TheChatTimeLineItem.defaultProps = {
   who: {},
   image: null,
   video: null,
+  whoBaseColor: TheChatTimeLineItem.DEFAULT_WHO_BASE_COLOR,
   whoImageSize: TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE,
   align: 'left',
   onWho: () => null
@@ -175,5 +181,6 @@ TheChatTimeLineItem.defaultProps = {
 TheChatTimeLineItem.displayName = 'TheChatTimeLineItem'
 
 TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE = 42
+TheChatTimeLineItem.DEFAULT_WHO_BASE_COLOR = 'rgb(211, 163, 255)'
 
 export default TheChatTimeLineItem

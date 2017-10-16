@@ -31,6 +31,7 @@ class TheChatTimeLine extends React.Component {
       items,
       lang,
       onWho,
+      whoBaseColor,
       whoImageSize
     } = props
 
@@ -74,7 +75,7 @@ class TheChatTimeLine extends React.Component {
                             <TheChatTimeLineItem
                               key={title + 'at,text,image,video'.split(',').map((key) => item[key]).join('-')}
                               {...item}
-                              {...{onWho, whoImageSize}}
+                              {...{onWho, whoBaseColor, whoImageSize}}
                             />
                           ))
                       }
@@ -145,6 +146,8 @@ TheChatTimeLine.propTypes = {
   onScrollReachBottom: PropTypes.func,
   /** Handler for who tap */
   onWho: PropTypes.func,
+  /** Base color of who */
+  whoBaseColor: PropTypes.string,
   /** Size of who image */
   whoImageSize: PropTypes.number
 }
@@ -156,6 +159,7 @@ TheChatTimeLine.defaultProps = {
   onScrollReachTop: null,
   onScrollReachBottom: null,
   onWho: null,
+  whoBaseColor: TheChatTimeLineItem.DEFAULT_WHO_BASE_COLOR,
   whoImageSize: TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE,
 }
 

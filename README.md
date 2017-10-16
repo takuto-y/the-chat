@@ -210,7 +210,6 @@ class ExampleComponent extends React.Component {
           at: new Date(),
           text: 'Say hoo!',
           who: {
-            color: '#38E',
             name: 'hoge',
             initial: 'H'
           }
