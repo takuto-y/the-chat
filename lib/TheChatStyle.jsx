@@ -103,10 +103,13 @@ TheChatStyle.data = (options) => {
     '.the-chat-time-line-item-right': {
       flexDirection: 'row-reverse',
       textAlign: 'right',
+      '.the-chat-time-line-item-who-name': {
+        display: 'none'
+      },
       '.the-chat-time-line-item-text': {
         backgroundColor: dominantColor,
         color: 'white',
-        display:'inline-block'
+        display: 'inline-block'
       },
       '.the-chat-time-line-item-text-tail': {
         backgroundColor: dominantColor,
@@ -134,7 +137,8 @@ TheChatStyle.data = (options) => {
       boxSizing: 'border-box'
     },
     '.the-chat-time-line-item-who-name': {
-      fontSize: 'small'
+      fontSize: 'small',
+      display: 'inline-block'
     },
     '.the-chat-time-line-item-who-image': {
       maxWidth: '100%',
