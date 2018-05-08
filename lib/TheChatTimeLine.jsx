@@ -1,13 +1,13 @@
 'use strict'
 
-import React from 'react'
-import PropTypes from 'prop-types'
 import c from 'classnames'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { eventHandlersFor, htmlAttributesFor } from 'the-component-util'
+import { TheCondition } from 'the-condition'
 import { formatDate } from 'the-date'
 import { TheSpin } from 'the-spin'
-import { TheCondition } from 'the-condition'
 import TheChatTimeLineItem from './TheChatTimeLineItem'
-import { htmlAttributesFor, eventHandlersFor } from 'the-component-util'
 
 /**
  * Chat Time line
@@ -15,31 +15,69 @@ import { htmlAttributesFor, eventHandlersFor } from 'the-component-util'
 class TheChatTimeLine extends React.Component {
   constructor (props) {
     super(props)
-    const s = this
-    s.scrollElm = null
-    s.handleScroll = s.handleScroll.bind(s)
-    s.autoFollow = true
+    this.scrollerRef = React.createRef()
+    this.handleScroll = this.handleScroll.bind(this)
+    this.autoFollow = true
+  }
+
+  componentDidMount () {
+    const scroller = this.scrollerRef.current
+    const {handleScroll} = this
+    scroller.addEventListener('scroll', handleScroll)
+  }
+
+  componentDidUpdate () {
+    const {scroller} = this
+
+    if (scroller) {
+      if (this.autoFollow) {
+        scroller.scrollTop = scroller.scrollHeight
+      }
+    }
+  }
+
+  componentWillUnmount () {
+    const scroller = this.scrollerRef.current
+    const {handleScroll} = this
+    scroller.removeEventListener('scroll', handleScroll)
+  }
+
+  handleScroll (e) {
+    const {offsetHeight, scrollHeight, scrollTop} = e.target || e.srcElement
+    const reachTop = scrollTop === 0
+    if (reachTop) {
+      const {onScrollReachTop} = this.props
+      onScrollReachTop && onScrollReachTop()
+    }
+
+    const fromBottom = (scrollHeight - offsetHeight) - scrollTop
+    const reachBottom = fromBottom <= 0
+    if (reachBottom) {
+      const {onScrollReachBottom} = this.props
+      onScrollReachBottom && onScrollReachBottom()
+    }
+
+    this.autoFollow = fromBottom < 80
   }
 
   render () {
-    const s = this
-    const {props} = s
+    const {props} = this
     const {
-      spinning,
-      className,
       children,
+      className,
       items,
       lang,
       onWho,
+      spinning,
       whoBaseColor,
-      whoImageSize
+      whoImageSize,
     } = props
 
     const groupedItems = items
       .reduce((grouped, item) => {
         const title = formatDate(item.at, 'LL', {lang})
         return Object.assign(grouped, {
-          [title]: [...(grouped[title] || []), item]
+          [title]: [...(grouped[title] || []), item],
         })
       }, {})
     return (
@@ -48,13 +86,13 @@ class TheChatTimeLine extends React.Component {
            className={c('the-chat-time-line', className)}
       >
         <TheCondition if={!!spinning}>
-          <TheSpin cover
+          <TheSpin className='the-chat-time-line-spin'
+                   cover
                    enabled
-                   className='the-chat-time-line-spin'
           />
         </TheCondition>
         <div className='the-chat-time-line-scroll'
-             ref={(scrollElm) => { s.scrollElm = scrollElm }}>
+             ref={this.scrollerRef}>
           <div className='the-chat-time-line-content'>
             {children}
             {
@@ -88,77 +126,34 @@ class TheChatTimeLine extends React.Component {
       </div>
     )
   }
-
-  componentDidMount () {
-    const s = this
-    const {scrollElm, handleScroll} = s
-    scrollElm.addEventListener('scroll', handleScroll)
-  }
-
-  componentDidUpdate () {
-    const s = this
-    const {scrollElm} = s
-
-    if (scrollElm) {
-      if (s.autoFollow) {
-        scrollElm.scrollTop = scrollElm.scrollHeight
-      }
-    }
-  }
-
-  componentWillUnmount () {
-    const s = this
-    const {scrollElm, handleScroll} = s
-    scrollElm.removeEventListener('scroll', handleScroll)
-  }
-
-  handleScroll (e) {
-    const s = this
-    const {scrollHeight, offsetHeight, scrollTop} = e.target || e.srcElement
-    const reachTop = scrollTop === 0
-    if (reachTop) {
-      const {onScrollReachTop} = s.props
-      onScrollReachTop && onScrollReachTop()
-    }
-
-    const fromBottom = (scrollHeight - offsetHeight) - scrollTop
-    const reachBottom = fromBottom <= 0
-    if (reachBottom) {
-      const {onScrollReachBottom} = s.props
-      onScrollReachBottom && onScrollReachBottom()
-    }
-
-    s.autoFollow = fromBottom < 80
-  }
 }
 
 TheChatTimeLine.propTypes = {
   /** Shows spin */
-  spinning: PropTypes.bool,
   /** Item data */
   items: PropTypes.arrayOf(PropTypes.object),
   /** Lang */
   lang: PropTypes.string,
-
-  /** Handler when scroll reaches top */
-  onScrollReachTop: PropTypes.func,
   /** Handler when scroll reaches bottom */
   onScrollReachBottom: PropTypes.func,
+  /** Handler when scroll reaches top */
+  onScrollReachTop: PropTypes.func,
   /** Handler for who tap */
   onWho: PropTypes.func,
+  spinning: PropTypes.bool,
   /** Base color of who */
   whoBaseColor: PropTypes.string,
   /** Size of who image */
-  whoImageSize: PropTypes.number
+  whoImageSize: PropTypes.number,
 }
 
 TheChatTimeLine.defaultProps = {
-  spinning: false,
   items: [],
   lang: 'en',
-  onScrollReachTop: null,
   onScrollReachBottom: null,
+  onScrollReachTop: null,
   onWho: null,
+  spinning: false,
   whoBaseColor: TheChatTimeLineItem.DEFAULT_WHO_BASE_COLOR,
   whoImageSize: TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE,
 }

@@ -21,6 +21,13 @@
         "returns": null
       },
       {
+        "name": "handleSubmit",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
         "name": "handleUpdate",
         "docblock": null,
         "modifiers": [],
@@ -31,24 +38,17 @@
           }
         ],
         "returns": null
-      },
-      {
-        "name": "handleSubmit",
-        "docblock": null,
-        "modifiers": [],
-        "params": [],
-        "returns": null
       }
     ],
     "props": {
-      "values": {
+      "onSubmit": {
         "type": {
-          "name": "object"
+          "name": "func"
         },
         "required": true,
-        "description": "Form values",
+        "description": "Handler for value submit",
         "defaultValue": {
-          "value": "{}",
+          "value": "() => null",
           "computed": false
         }
       },
@@ -63,17 +63,6 @@
           "computed": false
         }
       },
-      "onSubmit": {
-        "type": {
-          "name": "func"
-        },
-        "required": true,
-        "description": "Handler for value submit",
-        "defaultValue": {
-          "value": "() => null",
-          "computed": false
-        }
-      },
       "submitText": {
         "type": {
           "name": "string"
@@ -82,6 +71,17 @@
         "description": "Text for submit",
         "defaultValue": {
           "value": "'Send'",
+          "computed": false
+        }
+      },
+      "values": {
+        "type": {
+          "name": "object"
+        },
+        "required": true,
+        "description": "",
+        "defaultValue": {
+          "value": "{}",
           "computed": false
         }
       }
@@ -123,17 +123,6 @@
       }
     ],
     "props": {
-      "spinning": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "Shows spin",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
       "items": {
         "type": {
           "name": "arrayOf",
@@ -159,23 +148,23 @@
           "computed": false
         }
       },
-      "onScrollReachTop": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "Handler when scroll reaches top",
-        "defaultValue": {
-          "value": "null",
-          "computed": false
-        }
-      },
       "onScrollReachBottom": {
         "type": {
           "name": "func"
         },
         "required": false,
         "description": "Handler when scroll reaches bottom",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "onScrollReachTop": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Handler when scroll reaches top",
         "defaultValue": {
           "value": "null",
           "computed": false
@@ -189,6 +178,17 @@
         "description": "Handler for who tap",
         "defaultValue": {
           "value": "null",
+          "computed": false
+        }
+      },
+      "spinning": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "false",
           "computed": false
         }
       },
@@ -221,13 +221,67 @@
     "displayName": "TheChatTimeLineItem",
     "methods": [],
     "props": {
+      "align": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'left'",
+              "computed": false
+            },
+            {
+              "value": "'right'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Content align",
+        "defaultValue": {
+          "value": "'left'",
+          "computed": false
+        }
+      },
       "at": {
         "type": {
           "name": "instanceOf",
           "value": "Date"
         },
         "required": true,
-        "description": "Date of the item",
+        "description": "",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "image": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Image Url",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "onWho": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Handler for click who",
+        "defaultValue": {
+          "value": "() => null",
+          "computed": false
+        }
+      },
+      "status": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Status text",
         "defaultValue": {
           "value": "null",
           "computed": false
@@ -244,28 +298,6 @@
           "computed": false
         }
       },
-      "who": {
-        "type": {
-          "name": "object"
-        },
-        "required": true,
-        "description": "Who posts",
-        "defaultValue": {
-          "value": "{}",
-          "computed": false
-        }
-      },
-      "image": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Image Url",
-        "defaultValue": {
-          "value": "null",
-          "computed": false
-        }
-      },
       "video": {
         "type": {
           "name": "string"
@@ -277,14 +309,14 @@
           "computed": false
         }
       },
-      "status": {
+      "who": {
         "type": {
-          "name": "string"
+          "name": "object"
         },
-        "required": false,
-        "description": "Status text",
+        "required": true,
+        "description": "Who posts",
         "defaultValue": {
-          "value": "null",
+          "value": "{}",
           "computed": false
         }
       },
@@ -308,38 +340,6 @@
         "defaultValue": {
           "value": "TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE",
           "computed": true
-        }
-      },
-      "align": {
-        "type": {
-          "name": "enum",
-          "value": [
-            {
-              "value": "'left'",
-              "computed": false
-            },
-            {
-              "value": "'right'",
-              "computed": false
-            }
-          ]
-        },
-        "required": false,
-        "description": "Content align",
-        "defaultValue": {
-          "value": "'left'",
-          "computed": false
-        }
-      },
-      "onWho": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "Handler for click who",
-        "defaultValue": {
-          "value": "() => null",
-          "computed": false
         }
       }
     }

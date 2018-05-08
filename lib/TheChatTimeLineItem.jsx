@@ -1,38 +1,37 @@
 'use strict'
 
-import React from 'react'
+import c from 'classnames'
 import PropTypes from 'prop-types'
-import { TheImage } from 'the-image'
-import { TheVideo } from 'the-video'
+import React from 'react'
+import { colorWithText, textColorFor } from 'the-color'
+import { eventHandlersFor, htmlAttributesFor } from 'the-component-util'
 import { TheCondition } from 'the-condition'
 import { formatDate } from 'the-date'
-import { textColorFor, colorWithText } from 'the-color'
-import c from 'classnames'
-import { htmlAttributesFor, eventHandlersFor } from 'the-component-util'
+import { TheImage } from 'the-image'
+import { TheVideo } from 'the-video'
 
 /**
  * Chat Time line item
  */
 class TheChatTimeLineItem extends React.Component {
   render () {
-    const s = this
-    const {props} = s
+    const {props} = this
     const {
-      className,
-      children,
+      align,
       at,
-      text,
+      children,
+      className,
       image,
+      onWho,
+      status,
+      text,
       video,
       who,
-      whoImageSize,
       whoBaseColor,
-      status,
-      align,
-      onWho
+      whoImageSize,
     } = props
     const {
-      color: whoColor = colorWithText(who.name, {base: whoBaseColor})
+      color: whoColor = colorWithText(who.name, {base: whoBaseColor}),
     } = who
     return (
       <div {...htmlAttributesFor(props, {except: ['className']})}
@@ -45,35 +44,32 @@ class TheChatTimeLineItem extends React.Component {
         <div className='the-chat-time-line-item-col the-chat-time-line-item-col-who'>
           <TheCondition if={!!who.image}>
             <TheImage className={c('the-chat-time-line-item-who-image', {
-              'the-chat-time-line-item-clickable': !!onWho
+              'the-chat-time-line-item-clickable': !!onWho,
             })}
-                      src={who.image}
-                      width={whoImageSize}
                       height={whoImageSize}
+                      onClick={() => onWho && onWho(who)}
                       scale='fill'
+                      src={who.image}
                       style={{
                         backgroundColor: whoColor,
                         borderColor: whoColor,
                         color: textColorFor(whoColor),
                       }}
-                      onClick={() => onWho && onWho(who)}
+                      width={whoImageSize}
             />
           </TheCondition>
           <TheCondition unless={!!who.image}>
             <div className={c('the-chat-time-line-item-who-image', {
-              'the-chat-time-line-item-clickable': !!onWho
+              'the-chat-time-line-item-clickable': !!onWho,
             })}
-                 src={who.image}
-                 width={whoImageSize}
-                 height={whoImageSize}
+                 onClick={() => onWho && onWho(who)}
                  style={{
                    backgroundColor: whoColor,
                    borderColor: whoColor,
                    color: textColorFor(whoColor),
-                   width: `${whoImageSize}px`,
                    height: `${whoImageSize}px`,
+                   width: `${whoImageSize}px`,
                  }}
-                 onClick={() => onWho && onWho(who)}
             >
               {who.initial || who.name}
             </div>
@@ -101,22 +97,22 @@ class TheChatTimeLineItem extends React.Component {
           </TheCondition>
           <TheCondition if={!!image}>
             <div className='the-chat-time-line-item-content'>
-              <TheImage src={image}
-                        width={'100%'}
-                        scale='fit'
-                        className='the-chat-time-line-item-image'
+              <TheImage className='the-chat-time-line-item-image'
                         resizeInterval={400}
+                        scale='fit'
+                        src={image}
+                        width='100%'
               />
             </div>
           </TheCondition>
           <TheCondition if={!!video}>
             <div className='the-chat-time-line-item-content'>
-              <TheVideo src={video}
+              <TheVideo className='video'
                         controls
-                        width={'100%'}
-                        scale='fit'
-                        className='video'
                         resizeInterval={400}
+                        scale='fit'
+                        src={video}
+                        width='100%'
               />
             </div>
           </TheCondition>
@@ -144,38 +140,38 @@ class TheChatTimeLineItem extends React.Component {
 
 TheChatTimeLineItem.propTypes = {
   /** Date of the item */
+  /** Content align */
+  align: PropTypes.oneOf(['left', 'right']),
   at: PropTypes.instanceOf(Date).isRequired,
-  /** Text */
-  text: PropTypes.string,
-  /** Who posts */
-  who: PropTypes.object.isRequired,
   /** Image Url */
   image: PropTypes.string,
-  /** Video url */
-  video: PropTypes.string,
+  /** Handler for click who */
+  onWho: PropTypes.func,
   /** Status text */
   status: PropTypes.string,
+  /** Text */
+  text: PropTypes.string,
+  /** Video url */
+  video: PropTypes.string,
+  /** Who posts */
+  who: PropTypes.object.isRequired,
   /** Base color of who */
   whoBaseColor: PropTypes.string,
   /** Image size of who */
   whoImageSize: PropTypes.number,
-  /** Content align */
-  align: PropTypes.oneOf(['left', 'right']),
-  /** Handler for click who */
-  onWho: PropTypes.func
 }
 
 TheChatTimeLineItem.defaultProps = {
+  align: 'left',
   at: null,
-  text: null,
-  status: null,
-  who: {},
   image: null,
+  onWho: () => null,
+  status: null,
+  text: null,
   video: null,
+  who: {},
   whoBaseColor: TheChatTimeLineItem.DEFAULT_WHO_BASE_COLOR,
   whoImageSize: TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE,
-  align: 'left',
-  onWho: () => null
 }
 
 TheChatTimeLineItem.displayName = 'TheChatTimeLineItem'

@@ -1,24 +1,23 @@
 'use strict'
 
-import React from 'react'
-import PropTypes from 'prop-types'
 import c from 'classnames'
-import TheChatStyle from './TheChatStyle'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { eventHandlersFor, htmlAttributesFor } from 'the-component-util'
 import TheChatForm from './TheChatForm'
+import TheChatStyle from './TheChatStyle'
 import TheChatTimeLine from './TheChatTimeLine'
 import TheChatTimeLineItem from './TheChatTimeLineItem'
-import { htmlAttributesFor, eventHandlersFor } from 'the-component-util'
 
 /**
  * Chat UI of the-components
  */
 class TheChat extends React.Component {
   render () {
-    const s = this
-    const {props} = s
+    const {props} = this
     const {
+      children,
       className,
-      children
     } = props
     return (
       <div {...htmlAttributesFor(props, {except: ['className']})}

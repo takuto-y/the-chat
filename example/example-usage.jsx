@@ -22,9 +22,8 @@ const videos = [
 class ExampleComponent extends React.Component {
   constructor (props) {
     super(props)
-    const s = this
-    s._timer = null
-    s.state = {
+    this._timer = null
+    this.state = {
       form: {},
       items: [
         {
@@ -84,8 +83,7 @@ class ExampleComponent extends React.Component {
   }
 
   render () {
-    const s = this
-    const {items} = s.state
+    const {items} = this.state
     return (
       <div>
         <TheVideoStyle/>
@@ -103,13 +101,13 @@ class ExampleComponent extends React.Component {
                             items={items}
                             onWho={(who) => console.log('who selected', who)}
           />
-          <TheChat.Form onUpdate={(form) => s.setState({form})}
-                        values={s.state.form}
-                        onSubmit={() => s.setState({
+          <TheChat.Form onUpdate={(form) => this.setState({form})}
+                        values={this.state.form}
+                        onSubmit={() => this.setState({
                           form: {},
-                          items: [...s.state.items, {
+                          items: [...this.state.items, {
                             at: new Date(),
-                            text: s.state.form.text,
+                            text: this.state.form.text,
                             align: 'right',
                             who: {
                               name: 'Me',
@@ -125,17 +123,16 @@ class ExampleComponent extends React.Component {
   }
 
   componentDidMount () {
-    const s = this
-    s._timer = setInterval(() => {
-      const {items} = s.state
+    this._timer = setInterval(() => {
+      const {items} = this.state
       if (window.DISABLE_THE_CHAT_PUSH) {
         return
       }
-      s.setState({
+      this.setState({
         items: [...items, {
           at: new Date(),
           text: 'Say hoo!',
-          align: s.state.items.length % 2 ? 'left' : 'right',
+          align: this.state.items.length % 2 ? 'left' : 'right',
           who: {
             name: 'hoge',
             initial: 'H'
@@ -147,8 +144,7 @@ class ExampleComponent extends React.Component {
   }
 
   componentWillUnmount () {
-    const s = this
-    clearInterval(s._timer)
+    clearInterval(this._timer)
   }
 }
 

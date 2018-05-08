@@ -1,25 +1,52 @@
 'use strict'
 
-import React from 'react'
-import PropTypes from 'prop-types'
 import c from 'classnames'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { TheButton } from 'the-button'
+import { eventHandlersFor, htmlAttributesFor } from 'the-component-util'
 import { TheForm } from 'the-form'
 import { TheInput } from 'the-input'
-import { TheButton } from 'the-button'
-import { htmlAttributesFor, eventHandlersFor } from 'the-component-util'
 
 /**
  * Chat UI of the-components
  */
 class TheChatForm extends React.Component {
+  constructor (props) {
+    super(props)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.handleUpdate = this.handleUpdate.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleKeyDown (e) {
+    const isSubmit = e.keyCode === 13 && (e.shiftKey || e.metaKey)
+    if (isSubmit) {
+      this.handleSubmit()
+    }
+  }
+
+  handleSubmit () {
+    const {onSubmit, values} = this.props
+    const {text} = values
+    if (!text) {
+      return
+    }
+    onSubmit && onSubmit(values)
+  }
+
+  handleUpdate (values) {
+    const {onUpdate} = this.props
+    onUpdate && onUpdate(values)
+  }
+
   render () {
-    const s = this
-    const {props} = s
+    const {props} = this
     const {
-      className,
       children,
+      className,
+      submitText,
       values,
-      submitText
     } = props
     return (
       <div {...htmlAttributesFor(props, {except: ['className']})}
@@ -27,66 +54,42 @@ class TheChatForm extends React.Component {
            className={c('the-chat-form', className)}
       >
         {children}
-        <TheForm inline
-                 className='the-chat-form-form'
+        <TheForm className='the-chat-form-form'
+                 inline
         >
 
           <TheInput.TextArea name='text'
-                             value={values['text']}
-                             onUpdate={(v) => s.handleUpdate(v)}
-                             onKeyDown={(e) => s.handleKeyDown(e)}
+                             onKeyDown={this.handleKeyDown}
+                             onUpdate={this.handleUpdate}
                              rows={2}
+                             value={values['text']}
           />
-          <TheButton primary
-                     onSubmit={() => s.handleSubmit()}>
+          <TheButton onSubmit={this.handleSubmit}
+                     primary>
             {submitText}
           </TheButton>
         </TheForm>
       </div>
     )
   }
-
-  handleKeyDown (e) {
-    const s = this
-    const isSubmit = e.keyCode === 13 && (e.shiftKey || e.metaKey)
-    if (isSubmit) {
-      s.handleSubmit()
-    }
-  }
-
-  handleUpdate (values) {
-    const s = this
-    const {onUpdate} = s.props
-    onUpdate && onUpdate(values)
-  }
-
-  handleSubmit () {
-    const s = this
-    const {onSubmit, values} = s.props
-    const {text} = values
-    if (!text) {
-      return
-    }
-    onSubmit && onSubmit(values)
-  }
 }
 
 TheChatForm.propTypes = {
   /** Form values */
-  values: PropTypes.object.isRequired,
-  /** Handler for value update */
-  onUpdate: PropTypes.func.isRequired,
   /** Handler for value submit */
   onSubmit: PropTypes.func.isRequired,
+  /** Handler for value update */
+  onUpdate: PropTypes.func.isRequired,
   /** Text for submit */
   submitText: PropTypes.string,
+  values: PropTypes.object.isRequired,
 }
 
 TheChatForm.defaultProps = {
-  values: {},
-  onUpdate: () => null,
   onSubmit: () => null,
+  onUpdate: () => null,
   submitText: 'Send',
+  values: {},
 }
 
 TheChatForm.displayName = 'TheChatForm'
