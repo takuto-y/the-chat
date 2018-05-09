@@ -2,7 +2,7 @@
 /**
  * Chat UI of the-components
  * @module the-chat
- * @version 1.0.16
+ * @version 1.0.17
  */
 'use strict'
 

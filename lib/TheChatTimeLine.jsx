@@ -27,7 +27,7 @@ class TheChatTimeLine extends React.Component {
   }
 
   componentDidUpdate () {
-    const {scroller} = this
+    const scroller = this.scrollerRef.current
 
     if (scroller) {
       if (this.autoFollow) {
