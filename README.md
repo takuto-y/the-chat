@@ -118,7 +118,7 @@ class ExampleComponent extends React.Component {
         },
         {
           at: new Date('2017/10/03 12:34'),
-          text: 'This is the third post from John',
+          node: <span>This is the third post from John</span>,
           who: {
             name: 'John',
             image: images[0]

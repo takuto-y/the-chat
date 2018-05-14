@@ -22,6 +22,7 @@ class TheChatTimeLineItem extends React.Component {
       children,
       className,
       image,
+      node,
       onWho,
       status,
       text,
@@ -92,6 +93,13 @@ class TheChatTimeLineItem extends React.Component {
                     ].filter(Boolean), [])
                   }
                 </div>
+              </div>
+            </div>
+          </TheCondition>
+          <TheCondition if={!!node}>
+            <div className='the-chat-time-line-item-content'>
+              <div className='the-chat-time-line-item-node'>
+                {node}
               </div>
             </div>
           </TheCondition>
