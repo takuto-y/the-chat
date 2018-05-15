@@ -111,7 +111,7 @@ class TheChatTimeLine extends React.Component {
                           .sort((a, b) => a.at - b.at)
                           .map((item) => (
                             <TheChatTimeLineItem
-                              key={title + 'at,text,image,video'.split(',').map((key) => item[key]).join('-')}
+                              key={title + 'id,at,text,image,video'.split(',').map((key) => item[key]).join('-')}
                               {...item}
                               {...{onWho, whoBaseColor, whoImageSize}}
                             />
