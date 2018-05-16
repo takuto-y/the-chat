@@ -108,8 +108,8 @@ class TheChatTimeLineItem extends React.Component {
               <TheImage className='the-chat-time-line-item-image'
                         resizeInterval={400}
                         scale='fit'
-                        src={image}
                         width='100%'
+                        {...(typeof image === 'string' ? {src: image} : image)}
               />
             </div>
           </TheCondition>
@@ -119,8 +119,8 @@ class TheChatTimeLineItem extends React.Component {
                         controls
                         resizeInterval={400}
                         scale='fit'
-                        src={video}
                         width='100%'
+                        {...(typeof video === 'string' ? {src: video} : video)}
               />
             </div>
           </TheCondition>

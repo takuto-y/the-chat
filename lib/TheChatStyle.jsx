@@ -32,6 +32,7 @@ TheChatStyle.data = (options) => {
     backgroundForRightText = '#808080',
     dominantColor = ThemeValues.dominantColor,
     lightBorderColor = ThemeValues.lightBorderColor,
+    lightTextColor = ThemeValues.lightTextColor,
     textColor = ThemeValues.textColor,
   } = options
   return asStyleData('.the-chat', {
@@ -49,6 +50,13 @@ TheChatStyle.data = (options) => {
       boxSizing: 'border-box',
       display: 'block',
       position: 'relative',
+    },
+    '.the-chat-time-line-alt': {
+      color: lightTextColor,
+      margin: '8px auto',
+      textAlign: 'center',
+      padding: '24px 8px',
+      opacity: 0.8,
     },
     '.the-chat-time-line-content': {
       background: backgroundColor,

@@ -63,8 +63,10 @@ class TheChatTimeLine extends React.Component {
   render () {
     const {props} = this
     const {
+      alt,
       children,
       className,
+      empty = props.items && props.items.length === 0,
       items,
       lang,
       onWho,
@@ -90,6 +92,9 @@ class TheChatTimeLine extends React.Component {
                    cover
                    enabled
           />
+        </TheCondition>
+        <TheCondition if={empty}>
+          <p className='the-chat-time-line-alt'>{alt}</p>
         </TheCondition>
         <div className='the-chat-time-line-scroll'
              ref={this.scrollerRef}>
@@ -129,8 +134,9 @@ class TheChatTimeLine extends React.Component {
 }
 
 TheChatTimeLine.propTypes = {
-  /** Shows spin */
   /** Item data */
+  /** Alt text */
+  alt: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.object),
   /** Lang */
   lang: PropTypes.string,
@@ -140,6 +146,7 @@ TheChatTimeLine.propTypes = {
   onScrollReachTop: PropTypes.func,
   /** Handler for who tap */
   onWho: PropTypes.func,
+  /** Shows spin */
   spinning: PropTypes.bool,
   /** Base color of who */
   whoBaseColor: PropTypes.string,
@@ -148,6 +155,7 @@ TheChatTimeLine.propTypes = {
 }
 
 TheChatTimeLine.defaultProps = {
+  alt: 'No chat yet',
   items: [],
   lang: 'en',
   onScrollReachBottom: null,

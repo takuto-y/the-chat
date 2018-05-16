@@ -129,7 +129,6 @@ class ExampleComponent extends React.Component {
           video: videos[0],
           who: {
             name: 'John The Video',
-            video: videos[0],
             image: images[1],
           }
         },
@@ -189,6 +188,14 @@ class ExampleComponent extends React.Component {
                             }
                           }]
                         })}
+          />
+        </TheChat>
+
+        <hr/>
+
+        <TheChat>
+          <TheChat.TimeLine alt='Not chat yet'
+                            empty={true}
           />
         </TheChat>
       </div>
