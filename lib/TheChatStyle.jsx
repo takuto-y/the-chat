@@ -54,9 +54,9 @@ TheChatStyle.data = (options) => {
     '.the-chat-time-line-alt': {
       color: lightTextColor,
       margin: '8px auto',
-      textAlign: 'center',
-      padding: '24px 8px',
       opacity: 0.8,
+      padding: '24px 8px',
+      textAlign: 'center',
     },
     '.the-chat-time-line-content': {
       background: backgroundColor,

@@ -123,6 +123,17 @@
       }
     ],
     "props": {
+      "alt": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Alt text",
+        "defaultValue": {
+          "value": "'No chat yet'",
+          "computed": false
+        }
+      },
       "items": {
         "type": {
           "name": "arrayOf",
@@ -131,7 +142,7 @@
           }
         },
         "required": false,
-        "description": "Item data",
+        "description": "",
         "defaultValue": {
           "value": "[]",
           "computed": false
@@ -186,7 +197,7 @@
           "name": "bool"
         },
         "required": false,
-        "description": "",
+        "description": "Shows spin",
         "defaultValue": {
           "value": "false",
           "computed": false
