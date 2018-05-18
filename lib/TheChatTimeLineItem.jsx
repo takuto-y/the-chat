@@ -152,7 +152,7 @@ TheChatTimeLineItem.propTypes = {
   align: PropTypes.oneOf(['left', 'right']),
   at: PropTypes.instanceOf(Date).isRequired,
   /** Image Url */
-  image: PropTypes.string,
+  image: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   /** Handler for click who */
   onWho: PropTypes.func,
   /** Status text */
@@ -160,7 +160,7 @@ TheChatTimeLineItem.propTypes = {
   /** Text */
   text: PropTypes.string,
   /** Video url */
-  video: PropTypes.string,
+  video: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   /** Who posts */
   who: PropTypes.object.isRequired,
   /** Base color of who */

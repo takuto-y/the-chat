@@ -279,12 +279,13 @@ Chat Time line
 
 | Name | Type | Description | Default |
 | --- | --- | ---- | ---- |
-| `items` | arrayOf object | Item data | `[]` |
+| `alt` | string  | Alt text | `'No chat yet'` |
+| `items` | arrayOf object |  | `[]` |
 | `lang` | string  | Lang | `'en'` |
 | `onScrollReachBottom` | func  | Handler when scroll reaches bottom | `null` |
 | `onScrollReachTop` | func  | Handler when scroll reaches top | `null` |
 | `onWho` | func  | Handler for who tap | `null` |
-| `spinning` | bool  |  | `false` |
+| `spinning` | bool  | Shows spin | `false` |
 | `whoBaseColor` | string  | Base color of who | `TheChatTimeLineItem.DEFAULT_WHO_BASE_COLOR` |
 | `whoImageSize` | number  | Size of who image | `TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE` |
 
@@ -298,11 +299,11 @@ Chat Time line item
 | --- | --- | ---- | ---- |
 | `align` | enum  | Content align | `'left'` |
 | `at` | instanceOf  |  | `null` |
-| `image` | string  | Image Url | `null` |
+| `image` | union  | Image Url | `null` |
 | `onWho` | func  | Handler for click who | `() => null` |
 | `status` | string  | Status text | `null` |
 | `text` | string  | Text | `null` |
-| `video` | string  | Video url | `null` |
+| `video` | union  | Video url | `null` |
 | `who` | object  | Who posts | `{}` |
 | `whoBaseColor` | string  | Base color of who | `TheChatTimeLineItem.DEFAULT_WHO_BASE_COLOR` |
 | `whoImageSize` | number  | Image size of who | `TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE` |

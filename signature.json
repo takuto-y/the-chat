@@ -267,7 +267,15 @@
       },
       "image": {
         "type": {
-          "name": "string"
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "object"
+            }
+          ]
         },
         "required": false,
         "description": "Image Url",
@@ -311,7 +319,15 @@
       },
       "video": {
         "type": {
-          "name": "string"
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "object"
+            }
+          ]
         },
         "required": false,
         "description": "Video url",
