@@ -13,7 +13,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
-    "the-button": "^3.0.15",
+    "the-button": "^3.0.16",
     "the-color": "^2.0.0",
     "the-component-util": "^2.2.3",
     "the-condition": "^3.0.0",
@@ -28,8 +28,8 @@
   },
   "devDependencies": {
     "@babel/runtime": "^7.0.0-beta.46",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "react-router-dom": "^4.2.2",
     "the-component-demo": "^4.0.6",
     "the-script-build": "^3.1.9",

@@ -257,10 +257,10 @@ Chat UI of the-components
 | Name | Type | Description | Default |
 | --- | --- | ---- | ---- |
 | `minLength` | number  | Minimum text length | `1` |
-| `onSubmit` | func  |  | `() => null` |
+| `onSubmit` | func  | Handler for value submit | `() => null` |
 | `onUpdate` | func  | Handler for value update | `() => null` |
 | `submitText` | string  | Text for submit | `'Send'` |
-| `values` | object  |  | `{}` |
+| `values` | object  | Form values | `{}` |
 
 ### TheChatStyle
 

@@ -57,7 +57,7 @@
           "name": "func"
         },
         "required": true,
-        "description": "",
+        "description": "Handler for value submit",
         "defaultValue": {
           "value": "() => null",
           "computed": false
@@ -90,7 +90,7 @@
           "name": "object"
         },
         "required": true,
-        "description": "",
+        "description": "Form values",
         "defaultValue": {
           "value": "{}",
           "computed": false
