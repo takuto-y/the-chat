@@ -41,12 +41,23 @@
       }
     ],
     "props": {
+      "minLength": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Minimum text length",
+        "defaultValue": {
+          "value": "1",
+          "computed": false
+        }
+      },
       "onSubmit": {
         "type": {
           "name": "func"
         },
         "required": true,
-        "description": "Handler for value submit",
+        "description": "",
         "defaultValue": {
           "value": "() => null",
           "computed": false

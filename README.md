@@ -256,7 +256,8 @@ Chat UI of the-components
 
 | Name | Type | Description | Default |
 | --- | --- | ---- | ---- |
-| `onSubmit` | func  | Handler for value submit | `() => null` |
+| `minLength` | number  | Minimum text length | `1` |
+| `onSubmit` | func  |  | `() => null` |
 | `onUpdate` | func  | Handler for value update | `() => null` |
 | `submitText` | string  | Text for submit | `'Send'` |
 | `values` | object  |  | `{}` |
