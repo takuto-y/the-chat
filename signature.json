@@ -116,6 +116,135 @@
       }
     }
   },
+  "TheChatTimeLine": {
+    "description": "Chat Time line",
+    "displayName": "TheChatTimeLine",
+    "methods": [
+      {
+        "name": "handleScroll",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "scrollToBottom",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ],
+    "props": {
+      "alt": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Alt text",
+        "defaultValue": {
+          "value": "'No chat yet'",
+          "computed": false
+        }
+      },
+      "items": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "object"
+          }
+        },
+        "required": false,
+        "description": "Item data",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "lang": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Lang",
+        "defaultValue": {
+          "value": "'en'",
+          "computed": false
+        }
+      },
+      "onScrollReachBottom": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Handler when scroll reaches bottom",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "onScrollReachTop": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Handler when scroll reaches top",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "onWho": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Handler for who tap",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "spinning": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Shows spin",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "whoBaseColor": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Base color of who",
+        "defaultValue": {
+          "value": "TheChatTimeLineItem.DEFAULT_WHO_BASE_COLOR",
+          "computed": true
+        }
+      },
+      "whoImageSize": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Size of who image",
+        "defaultValue": {
+          "value": "TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE",
+          "computed": true
+        }
+      }
+    }
+  },
   "TheChatTimeLineItem": {
     "description": "Chat Time line item",
     "displayName": "TheChatTimeLineItem",

@@ -42,7 +42,7 @@ class TheChatTimeLine extends React.Component {
     }
 
     const addedItems = itemsDiff(prevProps.items, this.props.items)
-    if (addedItems[0]?.align === 'right') {
+    if (addedItems[0] && addedItems[0].align === 'right') {
       this.scrollToBottom()
     }
   }
