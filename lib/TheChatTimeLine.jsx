@@ -9,6 +9,16 @@ import { formatDate } from 'the-date'
 import { TheSpin } from 'the-spin'
 import TheChatTimeLineItem from './TheChatTimeLineItem'
 
+const itemsDiff = (prevItems, nextItems) => {
+  const prevDates = new Set(prevItems.map(({at}) => at))
+  const datesDiff = new Set(nextItems.map(({at}) => at))
+  for (const date of prevDates) {
+    datesDiff.delete(date)
+  }
+  const addedItems = [...datesDiff].sort().reverse().map((at) => nextItems.find((item) => item.at === at))
+  return addedItems
+}
+
 /**
  * Chat Time line
  */
@@ -26,13 +36,14 @@ class TheChatTimeLine extends React.Component {
     scroller.addEventListener('scroll', handleScroll)
   }
 
-  componentDidUpdate () {
-    const scroller = this.scrollerRef.current
+  componentDidUpdate (prevProps) {
+    if (this.autoFollow) {
+      this.scrollToBottom()
+    }
 
-    if (scroller) {
-      if (this.autoFollow) {
-        scroller.scrollTop = scroller.scrollHeight
-      }
+    const addedItems = itemsDiff(prevProps.items, this.props.items)
+    if (addedItems[0] && addedItems[0].align === 'right') {
+      this.scrollToBottom()
     }
   }
 
@@ -130,6 +141,13 @@ class TheChatTimeLine extends React.Component {
         </div>
       </div>
     )
+  }
+
+  scrollToBottom () {
+    const scroller = this.scrollerRef.current
+    if (scroller) {
+      scroller.scrollTop = scroller.scrollHeight
+    }
   }
 }
 

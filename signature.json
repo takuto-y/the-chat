@@ -131,6 +131,13 @@
           }
         ],
         "returns": null
+      },
+      {
+        "name": "scrollToBottom",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
       }
     ],
     "props": {
