@@ -93,11 +93,11 @@ class TheChatTimeLine extends React.Component {
                    enabled
           />
         </TheCondition>
-        <TheCondition if={empty}>
-          <p className='the-chat-time-line-alt'>{alt}</p>
-        </TheCondition>
         <div className='the-chat-time-line-scroll'
              ref={this.scrollerRef}>
+          <TheCondition if={empty}>
+            <p className='the-chat-time-line-alt'>{alt}</p>
+          </TheCondition>
           <div className='the-chat-time-line-content'>
             {children}
             {
