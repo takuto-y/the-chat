@@ -4,8 +4,8 @@
 
 'use strict'
 
-const { licenseBud } = require('ape-tmpl')
-const { license, repository } = require('./package.json')
+const {licenseBud} = require('ape-tmpl')
+const {license, repository} = require('./package.json')
 
 module.exports = licenseBud({
   type: license,

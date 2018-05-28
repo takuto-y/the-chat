@@ -134,9 +134,9 @@ class TheChatTimeLine extends React.Component {
 }
 
 TheChatTimeLine.propTypes = {
-  /** Item data */
   /** Alt text */
   alt: PropTypes.string,
+  /** Item data */
   items: PropTypes.arrayOf(PropTypes.object),
   /** Lang */
   lang: PropTypes.string,
