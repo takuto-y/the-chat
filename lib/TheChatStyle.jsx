@@ -112,6 +112,7 @@ TheChatStyle.data = (options) => {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
+      minWidth: '0',
     },
     '.the-chat-time-line-item-col-spacer': {
       width: '72px',
@@ -149,6 +150,7 @@ TheChatStyle.data = (options) => {
         backgroundColor: backgroundForRightText,
         color: 'white',
         display: 'inline-block',
+        textAlign: 'left',
       },
       '.the-chat-time-line-item-text-tail': {
         backgroundColor: backgroundForRightText,
@@ -170,8 +172,10 @@ TheChatStyle.data = (options) => {
       color: textColor,
       display: 'block',
       fontSize: 'smaller',
+      maxWidth: '100%',
       padding: '8px',
       position: 'relative',
+      wordWrap: 'break-word',
     },
     '.the-chat-time-line-item-text-tail': {
       backgroundColor: backgroundForLeftText,
