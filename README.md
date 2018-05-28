@@ -281,7 +281,7 @@ Chat Time line
 | Name | Type | Description | Default |
 | --- | --- | ---- | ---- |
 | `alt` | string  | Alt text | `'No chat yet'` |
-| `items` | arrayOf object |  | `[]` |
+| `items` | arrayOf object | Item data | `[]` |
 | `lang` | string  | Lang | `'en'` |
 | `onScrollReachBottom` | func  | Handler when scroll reaches bottom | `null` |
 | `onScrollReachTop` | func  | Handler when scroll reaches top | `null` |
