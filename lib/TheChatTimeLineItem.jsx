@@ -135,7 +135,7 @@ class TheChatTimeLineItem extends React.Component {
               {status}
             </div>
             <div className='the-chat-time-line-item-date'>
-              {formatDate(at, 'hh:mm')}
+              {formatDate(at, TheChatTimeLineItem.TIME_FORMAT)}
             </div>
           </div>
         </div>
@@ -186,5 +186,6 @@ TheChatTimeLineItem.displayName = 'TheChatTimeLineItem'
 
 TheChatTimeLineItem.DEFAULT_WHO_IMAGE_SIZE = 42
 TheChatTimeLineItem.DEFAULT_WHO_BASE_COLOR = '#58E'
+TheChatTimeLineItem.TIME_FORMAT = 'HH:mm'
 
 export default TheChatTimeLineItem
