@@ -60,7 +60,6 @@ class TheChatForm extends React.Component {
         <TheForm className='the-chat-form-form'
                  inline
         >
-
           <TheInput.TextArea disabled={disabled}
                              name='text'
                              onKeyDown={this.handleKeyDown}

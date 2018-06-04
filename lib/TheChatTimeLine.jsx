@@ -34,6 +34,11 @@ class TheChatTimeLine extends React.Component {
     const scroller = this.scrollerRef.current
     const {handleScroll} = this
     scroller.addEventListener('scroll', handleScroll)
+
+    this.scrollToBottom()
+    setTimeout(() => {
+      this.scrollToBottom()
+    }, 100)
   }
 
   componentDidUpdate (prevProps) {
