@@ -41,6 +41,18 @@
       }
     ],
     "props": {
+      "disabled": {
+        "type": {
+          "name": "custom",
+          "raw": "PropTypes.boolean"
+        },
+        "required": false,
+        "description": "Disabled attribute",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
       "minLength": {
         "type": {
           "name": "number"
