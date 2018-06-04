@@ -43,8 +43,7 @@
     "props": {
       "disabled": {
         "type": {
-          "name": "custom",
-          "raw": "PropTypes.boolean"
+          "name": "bool"
         },
         "required": false,
         "description": "Disabled attribute",
