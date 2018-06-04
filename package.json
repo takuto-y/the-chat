@@ -1,7 +1,7 @@
 {
   "name": "the-chat",
   "description": "Chat UI of the-components",
-  "version": "1.0.27",
+  "version": "2.0.0",
   "author": {
     "name": "okunishinishi",
     "email": "okunishinishi@gmail.com",
@@ -15,13 +15,13 @@
     "prop-types": "^15.6.1",
     "the-button": "^3.0.17",
     "the-color": "^2.0.0",
-    "the-component-util": "^2.2.3",
+    "the-component-util": "^2.3.0",
     "the-condition": "^3.0.0",
-    "the-date": "^1.4.2",
+    "the-date": "^2.0.5",
     "the-form": "^2.0.14",
     "the-icon": "^4.0.4",
     "the-image": "^2.0.3",
-    "the-input": "^3.3.3",
+    "the-input": "^3.4.1",
     "the-spin": "^3.1.0",
     "the-style": "^2.1.1",
     "the-video": "^2.0.15"
@@ -39,7 +39,7 @@
     "the-script-share": "^1.0.5",
     "the-script-test": "^2.1.1",
     "the-script-update": "^2.0.0",
-    "the-templates": "^3.2.0"
+    "the-templates": "^3.2.1"
   },
   "engines": {
     "node": ">=8",

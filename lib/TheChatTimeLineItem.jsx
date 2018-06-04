@@ -6,7 +6,7 @@ import React from 'react'
 import { colorWithText, textColorFor } from 'the-color'
 import { eventHandlersFor, htmlAttributesFor } from 'the-component-util'
 import { TheCondition } from 'the-condition'
-import { formatDate } from 'the-date'
+import { create as theDate } from 'the-date'
 import { TheImage } from 'the-image'
 import { TheVideo } from 'the-video'
 
@@ -135,7 +135,7 @@ class TheChatTimeLineItem extends React.Component {
               {status}
             </div>
             <div className='the-chat-time-line-item-date'>
-              {formatDate(at, TheChatTimeLineItem.TIME_FORMAT)}
+              {theDate(at).format(TheChatTimeLineItem.TIME_FORMAT)}
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { eventHandlersFor, htmlAttributesFor } from 'the-component-util'
 import { TheCondition } from 'the-condition'
-import { formatDate } from 'the-date'
+import { create as theDate } from 'the-date'
 import { TheSpin } from 'the-spin'
 import TheChatTimeLineItem from './TheChatTimeLineItem'
 
@@ -88,7 +88,7 @@ class TheChatTimeLine extends React.Component {
 
     const groupedItems = items
       .reduce((grouped, item) => {
-        const title = formatDate(item.at, 'LL', {lang})
+        const title = theDate(item.at, {lang}).format('LL')
         return Object.assign(grouped, {
           [title]: [...(grouped[title] || []), item],
         })
