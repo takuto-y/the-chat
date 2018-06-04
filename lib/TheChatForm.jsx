@@ -45,6 +45,7 @@ class TheChatForm extends React.Component {
     const {
       children,
       className,
+      disabled,
       minLength,
       submitText,
       values,
@@ -60,13 +61,14 @@ class TheChatForm extends React.Component {
                  inline
         >
 
-          <TheInput.TextArea name='text'
+          <TheInput.TextArea disabled={disabled}
+                             name='text'
                              onKeyDown={this.handleKeyDown}
                              onUpdate={this.handleUpdate}
                              rows={2}
                              value={values['text']}
           />
-          <TheButton disabled={!canSubmit}
+          <TheButton disabled={!canSubmit || disabled}
                      onSubmit={this.handleSubmit}
                      primary>
             {submitText}
@@ -78,6 +80,8 @@ class TheChatForm extends React.Component {
 }
 
 TheChatForm.propTypes = {
+  /** Disabled attribute */
+  disabled: PropTypes.boolean,
   /** Minimum text length */
   minLength: PropTypes.number,
   /** Handler for value submit */
@@ -91,6 +95,7 @@ TheChatForm.propTypes = {
 }
 
 TheChatForm.defaultProps = {
+  disabled: false,
   minLength: 1,
   onSubmit: () => null,
   onUpdate: () => null,
