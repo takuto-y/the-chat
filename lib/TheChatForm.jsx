@@ -81,7 +81,7 @@ class TheChatForm extends React.Component {
 
 TheChatForm.propTypes = {
   /** Disabled attribute */
-  disabled: PropTypes.boolean,
+  disabled: PropTypes.bool,
   /** Minimum text length */
   minLength: PropTypes.number,
   /** Handler for value submit */

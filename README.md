@@ -251,6 +251,7 @@ Chat UI of the-components
 
 | Name | Type | Description | Default |
 | --- | --- | ---- | ---- |
+| `disabled` | custom  | Disabled attribute | `false` |
 | `minLength` | number  | Minimum text length | `1` |
 | `onSubmit` | func  | Handler for value submit | `() => null` |
 | `onUpdate` | func  | Handler for value update | `() => null` |
