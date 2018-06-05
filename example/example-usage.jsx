@@ -99,6 +99,8 @@ class ExampleComponent extends React.Component {
           }}
                             items={items}
                             onWho={(who) => console.log('who selected', who)}
+                            onScrollReachTop={() => console.log('reached to top')}
+                            onScrollReachBottom={() => console.log('reached to bottom')}
           />
           <TheChat.Form onUpdate={(form) => this.setState({form})}
                         values={this.state.form}
