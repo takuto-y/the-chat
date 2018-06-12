@@ -42,11 +42,15 @@ class TheChatTimeLine extends React.Component {
   }
 
   componentDidUpdate (prevProps) {
+    const addedItems = itemsDiff(prevProps.items, this.props.items)
+    if (addedItems.length === 0) {
+      return
+    }
+
     if (this.autoFollow) {
       this.scrollToBottom()
     }
 
-    const addedItems = itemsDiff(prevProps.items, this.props.items)
     if (addedItems[0] && addedItems[0].align === 'right') {
       this.scrollToBottom()
     }
