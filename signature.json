@@ -52,6 +52,17 @@
           "computed": false
         }
       },
+      "maxRows": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Max rows",
+        "defaultValue": {
+          "value": "5",
+          "computed": false
+        }
+      },
       "minLength": {
         "type": {
           "name": "number"
@@ -60,6 +71,17 @@
         "description": "Minimum text length",
         "defaultValue": {
           "value": "1",
+          "computed": false
+        }
+      },
+      "minRows": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Min rows",
+        "defaultValue": {
+          "value": "2",
           "computed": false
         }
       },
