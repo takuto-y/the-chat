@@ -10,12 +10,12 @@ import { TheSpin } from 'the-spin'
 import TheChatTimeLineItem from './TheChatTimeLineItem'
 
 const itemsDiff = (prevItems, nextItems) => {
-  const prevDates = new Set(prevItems.map(({at}) => at))
-  const datesDiff = new Set(nextItems.map(({at}) => at))
+  const prevDates = new Set(prevItems.map(({at}) => JSON.stringify(at)))
+  const datesDiff = new Set(nextItems.map(({at}) => JSON.stringify(at)))
   for (const date of prevDates) {
     datesDiff.delete(date)
   }
-  const addedItems = [...datesDiff].sort().reverse().map((at) => nextItems.find((item) => item.at === at))
+  const addedItems = [...datesDiff].sort().reverse().map((at) => nextItems.find((item) => JSON.stringify(item.at) === at))
   return addedItems
 }
 
