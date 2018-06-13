@@ -46,7 +46,9 @@ class TheChatForm extends React.Component {
       children,
       className,
       disabled,
+      maxRows,
       minLength,
+      minRows,
       submitText,
       values,
     } = props
@@ -60,12 +62,13 @@ class TheChatForm extends React.Component {
         <TheForm className='the-chat-form-form'
                  inline
         >
-          <TheInput.TextArea disabled={disabled}
+          <TheInput.TextArea autoExpand
+                             disabled={disabled}
                              name='text'
                              onKeyDown={this.handleKeyDown}
                              onUpdate={this.handleUpdate}
-                             rows={2}
                              value={values['text']}
+                             {...{maxRows, minRows}}
           />
           <TheButton disabled={!canSubmit || disabled}
                      onSubmit={this.handleSubmit}
@@ -81,8 +84,12 @@ class TheChatForm extends React.Component {
 TheChatForm.propTypes = {
   /** Disabled attribute */
   disabled: PropTypes.bool,
+  /** Max rows */
+  maxRows: PropTypes.number,
   /** Minimum text length */
   minLength: PropTypes.number,
+  /** Min rows */
+  minRows: PropTypes.number,
   /** Handler for value submit */
   onSubmit: PropTypes.func.isRequired,
   /** Handler for value update */
@@ -95,7 +102,9 @@ TheChatForm.propTypes = {
 
 TheChatForm.defaultProps = {
   disabled: false,
+  maxRows: 5,
   minLength: 1,
+  minRows: 2,
   onSubmit: () => null,
   onUpdate: () => null,
   submitText: 'Send',

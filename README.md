@@ -254,7 +254,9 @@ Chat UI of the-components
 | Name | Type | Description | Default |
 | --- | --- | ---- | ---- |
 | `disabled` | bool  | Disabled attribute | `false` |
+| `maxRows` | number  | Max rows | `5` |
 | `minLength` | number  | Minimum text length | `1` |
+| `minRows` | number  | Min rows | `2` |
 | `onSubmit` | func  | Handler for value submit | `() => null` |
 | `onUpdate` | func  | Handler for value update | `() => null` |
 | `submitText` | string  | Text for submit | `'Send'` |
