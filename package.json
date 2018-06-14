@@ -21,7 +21,7 @@
     "the-form": "^2.0.15",
     "the-icon": "^4.0.4",
     "the-image": "^2.0.3",
-    "the-input": "^3.4.5",
+    "the-input": "^3.4.6",
     "the-spin": "^3.1.0",
     "the-style": "^2.1.1",
     "the-video": "^2.0.15"
@@ -32,7 +32,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
-    "the-component-demo": "^4.0.7",
+    "the-component-demo": "^4.0.9",
     "the-script-build": "^3.1.9",
     "the-script-doc": "^1.0.2",
     "the-script-release": "^1.0.6",

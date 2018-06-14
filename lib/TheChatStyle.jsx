@@ -205,7 +205,6 @@ TheChatStyle.data = (options) => {
       display: 'inline-block',
       fontSize: 'small',
       overflow: 'hidden',
-      textAlign: 'center',
       textOverflow: 'ellipsis',
     },
     '.the-chat-time-line-scroll': {
