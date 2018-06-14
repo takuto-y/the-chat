@@ -198,11 +198,15 @@ TheChatStyle.data = (options) => {
       margin: '4px',
       maxWidth: '100%',
       overflow: 'hidden',
+      textAlign: 'center',
       textOverflow: 'ellipsis',
     },
     '.the-chat-time-line-item-who-name': {
       display: 'inline-block',
       fontSize: 'small',
+      overflow: 'hidden',
+      textAlign: 'center',
+      textOverflow: 'ellipsis',
     },
     '.the-chat-time-line-scroll': {
       display: 'block',
