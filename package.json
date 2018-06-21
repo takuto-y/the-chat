@@ -1,7 +1,7 @@
 {
   "name": "the-chat",
   "description": "Chat UI of the-components",
-  "version": "2.0.16",
+  "version": "2.0.17",
   "author": {
     "name": "okunishinishi",
     "email": "okunishinishi@gmail.com",
@@ -21,7 +21,7 @@
     "the-form": "^2.0.18",
     "the-icon": "^4.0.7",
     "the-image": "^2.0.6",
-    "the-input": "^3.4.10",
+    "the-input": "^3.4.11",
     "the-spin": "^3.1.6",
     "the-style": "^2.1.11",
     "the-video": "^2.0.18"

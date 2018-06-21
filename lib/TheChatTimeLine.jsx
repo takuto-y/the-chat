@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { eventHandlersFor, htmlAttributesFor } from 'the-component-util'
 import { TheCondition } from 'the-condition'
-import { create as theDate } from 'the-date'
+import theDate from 'the-date'
 import { TheSpin } from 'the-spin'
 import TheChatTimeLineItem from './TheChatTimeLineItem'
 
