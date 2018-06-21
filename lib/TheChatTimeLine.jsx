@@ -10,13 +10,14 @@ import { TheSpin } from 'the-spin'
 import TheChatTimeLineItem from './TheChatTimeLineItem'
 
 const itemsDiff = (prevItems, nextItems) => {
-  const prevDates = new Set(prevItems.map(({at}) => JSON.stringify(at)))
-  const datesDiff = new Set(nextItems.map(({at}) => JSON.stringify(at)))
+  const prevDates = new Set(prevItems.map(({at}) => at.getTime()))
+  const datesDiff = new Set(nextItems.map(({at}) => at.getTime()))
+  const maxPrevDate = prevItems.reduce((maxDate, item) => maxDate > item.at.getTime() ? maxDate : item.at.getTime(), 0)
   for (const date of prevDates) {
     datesDiff.delete(date)
   }
-  const addedItems = [...datesDiff].sort().reverse().map((at) => nextItems.find((item) => JSON.stringify(item.at) === at))
-  return addedItems
+  const addedItems = [...datesDiff].sort().reverse().map((at) => nextItems.find((item) => item.at.getTime() === at))
+  return addedItems.filter((item, index) => item.at.getTime() > maxPrevDate)
 }
 
 /**
